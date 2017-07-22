@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "discord.js": "^11.1.0",
+    "roblox-js": "^3.0.6"
+  }
+}
