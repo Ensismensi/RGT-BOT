@@ -35,6 +35,7 @@ client.on('message', message => {
         client.destroy;
         process.exit(0);
     } else if (activeverifies.get(message.guild.id).get(message.author.id) == 1) {
+        message.member.setNickname(message.content)
         roblox.getIdFromUsername(message.content).then((id) => {
             message.reply("Perfect! Give me a moment.\n(i think ur id is "+id+")");
              let theid = uuid.v4()
