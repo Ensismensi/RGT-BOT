@@ -2,7 +2,6 @@
   "dependencies": {
     "discord.js": "^11.1.0",
     "roblox-js": "^3.0.6",
-    "sqlite3": "^3.1.8",
     "uws": "^8.14.0"
   }
 }
