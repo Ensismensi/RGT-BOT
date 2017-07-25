@@ -2,6 +2,7 @@ const fs = require('fs');
 const config = require('./config.json');
 const roblox = require('roblox-js');
 const Discord = require('discord.js');
+const randomLorem = require('random-lorem');
 const client = new Discord.Client();
 const uuid = require('uuid');
 if (config.token == "") {
@@ -37,7 +38,7 @@ client.on('message', message => {
     } else if (activeverifies.get(message.guild.id).get(message.author.id) == 1) {
         roblox.getIdFromUsername(message.content).then((id) => {
             message.reply("Perfect! Give me a moment.\n(i think ur id is "+id+")");
-             let theid = getRandomArbitrary(100000,999999).toString()
+             let theid = randomLorem() + "-" + randomLorem() + "-" + randomLorem();
                 message.channel.send({embed: {
                 title: "Verification",
                 description: "Okay, now add the text `"+theid+"` to your roblox profile description and send anything when done. I'll be waiting!"
