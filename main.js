@@ -37,7 +37,7 @@ client.on('message', message => {
     } else if (activeverifies.get(message.guild.id).get(message.author.id) == 1) {
         roblox.getIdFromUsername(message.content).then((id) => {
             message.reply("Perfect! Give me a moment.\n(i think ur id is "+id+")");
-             let theid = getRandomArbitrary(100000,999999).toString
+             let theid = getRandomArbitrary(100000,999999).toString()
                 message.channel.send({embed: {
                 title: "Verification",
                 description: "Okay, now add the text `"+theid+"` to your roblox profile description and send anything when done. I'll be waiting!"
