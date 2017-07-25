@@ -68,7 +68,17 @@ client.on('message', message => {
             activeverifies.get(message.guild.id).delete(message.author.id);
         })
     }}
-    //here
+    if(message.content.startsWith("!eval"))
+{
+    if(message.author.id !== config.owner) return message.channel.send("That's only for my Poppy.");
+    let code = message.content.split(" ").slice(1).join(" ");
+    try {
+        let evaled = eval(code);
+        message.channel.send(evaled, { code:"js" });
+    } catch(err) {
+        message.channel.send(err, { code:"js" });
+    }
+}
 })
 function getRandomArbitrary(min, max) {
   return Math.random() * (max - min) + min;
