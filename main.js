@@ -35,15 +35,14 @@ client.on('message', message => {
         client.destroy;
         process.exit(0);
     } else if (activeverifies.get(message.guild.id).get(message.author.id) == 1) {
-        message.member.setNickname(message.content)
         roblox.getIdFromUsername(message.content).then((id) => {
             message.reply("Perfect! Give me a moment.\n(i think ur id is "+id+")");
-             let theid = uuid.v4()
+             let theid = getRandomArbitrary(100000,999999).toString
                 message.channel.send({embed: {
                 title: "Verification",
                 description: "Okay, now add the text `"+theid+"` to your roblox profile description and send anything when done. I'll be waiting!"
              }});
-            ids.set(message.author.id, [id, theid]);             
+            ids.set(message.author.id, [id, theid, message.content]);             
             activeverifies.get(message.guild.id).set(message.author.id, 2);
         }).catch( (reason) => {
             message.reply("Mission failed with: " + reason.toString())
@@ -58,6 +57,7 @@ client.on('message', message => {
                     description: "You did it!"
                 }})
                 message.member.addRole(config.role)
+                message.member.setNickname(id[2])
             } else {
                 message.reply("I couldnt find that in your description...\n Try again? `!verify`")
             }
@@ -67,5 +67,9 @@ client.on('message', message => {
             activeverifies.get(message.guild.id).delete(message.author.id);
         })
     }}
+    //here
 })
+function getRandomArbitrary(min, max) {
+  return Math.random() * (max - min) + min;
+}
 client.login(config.token);
